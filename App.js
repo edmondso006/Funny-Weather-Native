@@ -8,6 +8,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
+import WeatherProvider from './providers/weatherProvider';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -18,6 +19,13 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+    constructor(props){
+        super(props)
+        this.weatherProvider = new WeatherProvider();
+
+        console.log(this.weatherProvider.getForecastFromZip('16510'));
+    }
+
   render() {
     return (
       <View style={styles.container}>
